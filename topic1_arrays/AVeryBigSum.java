@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class AVeryBigSum {
 
     /**
     * Your solution in here. Just need to add the number in a variable type long so you
@@ -13,7 +13,7 @@ public class Solution {
     static long aVeryBigSum(int n, long[] ar) {
         long sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += ar[i];
+        	sum += ar[i];
         }
         return sum;
     }
