@@ -4,9 +4,36 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class LeftRotation {
 
+    // Complete the rotLeft function below.
     static int[] leftRotation(int[] a, int d) {
+        if (a == null || a.length == 0 || d == 0 || d < 0) {
+            return a;
+        }
+
+        int rotation = d % a.length;
+        reverse(a, 0, a.length-1);
+        reverse(a, 0, a.length-1-rotation);
+        reverse(a, a.length-rotation, a.length-1);
+
+        return a;
+    }
+
+    static void reverse(int[] a, int start, int end) {
+        if (start > a.length - 1 || end > a.length - 1 || start > end || start == end) {
+            return;
+        }
+        while (start < end) {
+            int temp = a[start];
+            a[start] = a[end];
+            a[end] = temp;
+            start++;
+            end--;
+        }
+     }
+    
+    static int[] leftRotationExactly(int[] a, int d) {
         // They say in requirements that these inputs should not be considered.
         // However, noting that we should prevent against those.
         if (d == 0 || a.length == 0) {
@@ -22,7 +49,9 @@ public class Solution {
         int [] b = new int[a.length];
 
         for (int i = 0; i < a.length; i++) {
-            b[i] = a[indexHelper(i + rotation, a.length)];
+//            b[i] = a[indexHelper(i + rotation, a.length)];
+        	// rotate without the helper method 
+            b[i] = a[(i+rotation) % a.length ];
         }
         return b;
     }
